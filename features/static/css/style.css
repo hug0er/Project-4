@@ -1,0 +1,32 @@
+body {
+    background-color: #D0E8E3;
+   }
+
+.header {
+    padding: 60px;
+    text-align: center;
+    background:#74787B;
+    color: white;
+    font-size: 20px;
+  }
+
+  .content {
+    padding: 20px;
+    color: black;
+    font-size: 15px;
+  }
+
+  .final{
+    text-align: center;
+    font-size: 25px;
+  }
+
+  .register{
+    color: white;
+    font-size: 30px;
+
+  }
+  .topping{
+    color: white;
+    font-size: 30px;
+  }

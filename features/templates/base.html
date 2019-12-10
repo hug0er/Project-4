@@ -1,0 +1,30 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{% block title%} {% endblock %} </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+
+
+<body>
+    <div class="header">
+        <ul class = "nav justify-content-center" style="margin-right: 30px; margin-top: 1%; margin-bottom:  1%; ">
+            <li><a href="{% url 'home'  %}" id="" class="btn btn-outline-light">Home</a></li>
+            <li><a href="{% url 'data_set' %}" id="" class="btn btn-outline-light">Data set </a></li>
+            <li><a href="{%url 'features' %}" class="btn btn-outline-light"> Features </a></li>
+    </ul>
+    </div>
+
+    <div class="content">
+            {% block body%} {% endblock body%}
+       
+    </div>
+
+</body>
+

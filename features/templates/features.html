@@ -1,0 +1,52 @@
+{% extends "base.html" %} {% block title %} Features {% endblock %} {% block body %}
+
+
+
+<form action="/featuresSerie" method="POST"> {% csrf_token %}
+    <div class="form-group">
+      <label>Name for the Transaction</label>
+      <input type="text" class="form-control" name="name" placeholder="hug0er">
+    </div>
+    <div class="form-group">
+      <label >Series</label>
+      <select class="form-control" name="series">
+        <option> Series 1</option>
+        <option> Series 2</option>
+        <option> Series 3</option>
+        <option> Series 4</option>
+        <option> Series 5</option>
+        <option> Series 6</option>
+        <option> Series 7</option>
+        <option> Series 8</option>
+        <option> Series 9</option>
+        <option> Series 10</option>
+        <option> Series 11</option>
+        <option> Series 12</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label >Select the features to be extracted</label>
+      <select multiple class="form-control" name="features">
+        <option>Chaos</option>
+        <option>Periodicity</option>
+        <option value="SelfSimilarity" >Self-Similarity(hurst)</option>
+        <option value="Nonlinearity" >Non-linearity </option>
+        <option>Variance</option>
+        <option>Energy</option>
+        <option>Kurtosis</option>
+        <option value="Partial_autocorrelation_12">Partial_autocorrelation (lagg = 12)</option>
+        <option value="Partial_autocorrelation_2">Partial_autocorrelation (lagg = 2)</option>
+        <option value="Partial_autocorrelation_1">Partial_autocorrelation (lagg = 1)</option>
+        <option value="Autocorrelation_12">Autocorrelation (lagg = 12)</option>
+        <option value="Autocorrelation_2">Autocorrelation (lagg = 2)</option>
+        <option value="Autocorrelation_1">Autocorrelation (lagg = 1)</option>
+        <option>Sweekness</option>
+        <option>Trend</option>
+        <option value="LSTM">LSTM with genetic (mse)</option>
+        <option value="FFNN">FFNN with genetic (mse)</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>   
+
+{% endblock %}

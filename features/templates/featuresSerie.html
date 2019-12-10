@@ -1,0 +1,83 @@
+{% extends "base.html" %} {% block title %} Features {{name}} {% endblock %} {% block body %}
+
+<script>
+  function foo(){
+    var chart2 = new CanvasJS.Chart("chartContainer2", {
+      animationEnabled: true,
+      theme: "light2",
+      title: {
+        text: name + "Detrended"
+      },
+      axisY: {
+        includeZero: false
+      },
+      data: [{
+        type: "line",
+        dataPoints: b
+      }]
+    });
+    chart2.render();
+
+  }
+  var name = "{{series}}"
+  var pointsy = "{{pointsy|safe}}"
+  var newpointsy = pointsy.replace(/'/g, '"')
+  var a = JSON.parse(newpointsy)
+
+  var pointsy2 = "{{pointsy2|safe}}"
+  var newpointsy2 = pointsy2.replace(/'/g, '"')
+  var b = JSON.parse(newpointsy2)
+
+  window.onload = function () {
+    var chart = new CanvasJS.Chart("chartContainer", {
+      animationEnabled: true,
+      theme: "light2",
+      title: {
+        text: name
+      },
+      axisY: {
+        includeZero: false
+      },
+      data: [{
+        type: "line",
+        dataPoints: a
+      }]
+    });
+    chart.render();
+
+  }
+</script>
+
+<p> Hello {{name}}</p>
+<p>The {{series}} of NN3 has the following characteristics:</p>
+<div class="table-responsive">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        {% for a in features %}
+        <th scope="col">{{a}}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        {% for b in values %}
+        <td scope="row">{{b}}</td>
+
+        {% endfor %}
+
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+
+<h3>Try removing the trend with an approximation of a third grade polynomial (as suggested by Lemke) </h3>
+
+<button onclick = "foo()" class="btn btn-dark"> Go!</button>
+
+<div id="chartContainer2" style="height: 370px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+{% endblock %}
